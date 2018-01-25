@@ -79,6 +79,11 @@ export class HomePage {
   }
 
   openNavDetailsPage(item) {
-    this.navCtrl.push(ProfilePage, { item: item });
+     if(item.title == 'Angular'){
+      this.navCtrl.push(ProfilePage, { item: item });
+     }
+     if(item.title == 'Tux'){
+      this.navCtrl.push(NavigationDetailsPage, { item: item });
+     }
   }
 }
