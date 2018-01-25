@@ -1,89 +1,52 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams  } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
-
-
-@Component({
-  templateUrl: 'detail-home.html',
-})
-export class NavigationDetailsPage {
-  item;
-  constructor(params: NavParams) {
-    this.item = params.data.item;
-  }
-}
+import { ListPage } from '../list/list';
+import { ToastProvider} from '../../providers/toast.service';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  items = [];
-  constructor(public navCtrl: NavController) {
+  items = []; 
+  constructor(public navCtrl: NavController, private toast: ToastProvider) {
     this.items = [
       {
-        'title': 'Angular',
-        'icon': 'angular',
-        'description': 'A powerful Javascript framework for building single page apps. Angular is open source, and maintained by Google.',
-        'color': '#E63135'
-      },
-      {
-        'title': 'CSS3',
-        'icon': 'css3',
-        'description': 'The latest version of cascading stylesheets - the styling language of the web!',
+        'title': 'Perfil',
+        'icon': 'ios-contact',
         'color': '#0CA9EA'
       },
       {
-        'title': 'HTML5',
-        'icon': 'html5',
-        'description': 'The latest version of the web\'s markup language.',
+        'title': 'Relatório',
+        'icon': 'document',
         'color': '#F46529'
       },
       {
-        'title': 'JavaScript',
-        'icon': 'javascript',
-        'description': 'One of the most popular programming languages on the Web!',
+        'title': 'Scanner',
+        'icon': 'camera',
         'color': '#FFD439'
       },
       {
-        'title': 'Sass',
-        'icon': 'sass',
-        'description': 'Syntactically Awesome Stylesheets - a mature, stable, and powerful professional grade CSS extension.',
+        'title': 'Login',
+        'icon': 'person',
         'color': '#CE6296'
       },
       {
-        'title': 'NodeJS',
-        'icon': 'nodejs',
-        'description': 'An open-source, cross-platform runtime environment for developing server-side Web applications.',
-        'color': '#78BD43'
-      },
-      {
-        'title': 'Python',
-        'icon': 'python',
-        'description': 'A clear and powerful object-oriented programming language!',
-        'color': '#3575AC'
-      },
-      {
-        'title': 'Markdown',
-        'icon': 'markdown',
-        'description': 'A super simple way to add formatting like headers, bold, bulleted lists, and so on to plain text.',
-        'color': '#412159'
-      },
-      {
-        'title': 'Tux',
-        'icon': 'tux',
-        'description': 'The official mascot of the Linux kernel!',
-        'color': '#000'
+        'title': 'List',
+        'icon': 'list-box',
+        'color': '#CE6276'
       },
     ]
   }
 
   openNavDetailsPage(item) {
-     if(item.title == 'Angular'){
+     if(item.title == 'Perfil'){
       this.navCtrl.push(ProfilePage, { item: item });
      }
-     if(item.title == 'Tux'){
-      this.navCtrl.push(NavigationDetailsPage, { item: item });
+     if(item.title == 'List'){
+      this.navCtrl.push(ListPage, { item: item });
+      this.toast.presentToast();
      }
   }
 }
