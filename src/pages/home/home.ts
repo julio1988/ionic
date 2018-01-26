@@ -1,16 +1,19 @@
+import { ScannerPage } from './../scanner/scanner';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import { ListPage } from '../list/list';
-import { ToastProvider} from '../../providers/toast.service';
+import { ToastProvider } from '../../providers/toast.service';
 import { AlertProvider } from '../../providers/alert.service';
+import { ReportPage } from '../report/report';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  items = []; 
+  items = [];
   constructor(public navCtrl: NavController, private toast: ToastProvider, private alert: AlertProvider) {
     this.items = [
       {
@@ -42,13 +45,20 @@ export class HomePage {
   }
 
   openNavDetailsPage(item) {
-     if(item.title == 'Perfil'){
+    if (item.title == 'Perfil') {
       this.navCtrl.push(ProfilePage, { item: item });
-      this.alert.showPrompt();
-     }
-     if(item.title == 'List'){
+    }
+    if (item.title == 'Relatório') {
+      this.navCtrl.push(ReportPage, { item: item });
+    }
+    if (item.title == 'Scanner') {
+      this.navCtrl.push(ScannerPage, { item: item });
+    }
+    if (item.title == 'Login') {
+      this.navCtrl.push(LoginPage, { item: item });
+    }
+    if (item.title == 'List') {
       this.navCtrl.push(ListPage, { item: item });
-      this.toast.presentToast();
-     }
+    }
   }
 }

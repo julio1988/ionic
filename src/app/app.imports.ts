@@ -12,6 +12,9 @@ import { BrowserModule } from '@angular/platform-browser'
 // Modules
 import { HomePageModule } from '../pages/home/home.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
+import { ScannerPageModule } from '../pages/scanner/scanner.module';
+import { ReportPageModule } from '../pages/report/report.module';
+import { LoginPageModule } from '../pages/login/login.module';
 
 
 export const NATIVEMODULES = [
@@ -30,6 +33,9 @@ export const PROVIDERS = [
 
 export const MODULES = [
     HomePageModule,
-    ProfilePageModule
+    ProfilePageModule,
+    ScannerPageModule,
+    ReportPageModule,
+    LoginPageModule
 ]
 
