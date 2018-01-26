@@ -6,31 +6,33 @@ export class AlertProvider {
     constructor(public alertCtrl: AlertController) {
     }
 
-    showPrompt() {
-        let prompt = this.alertCtrl.create({
-          title: 'Login',
-          message: "Enter a name for this new album you're so keen on adding",
-          inputs: [
-            {
-              name: 'title',
-              placeholder: 'Title'
-            },
-          ],
-          buttons: [
-            {
-              text: 'Cancel',
-              handler: data => {
-                console.log('Cancel clicked');
-              }
-            },
-            {
-              text: 'Save',
-              handler: data => {
-                console.log('Saved clicked');
-              }
+presentErrorAlert(message: string){
+   // return this.presentAlert("Ah error has occurred.", message);
+}
+
+presentAlertWithCallback(title: string, message: string): Promise<boolean>{
+    return new Promise((resolve, reject) =>{
+      const confirm = this.alertCtrl.create({
+        title,
+        message,
+        buttons: [
+          {
+            text: "cancel",
+            role: "cancel",
+            handler: () => {
+              confirm.dismiss().then(() => resolve(false));
+              return false;
             }
-          ]
-        });
-        prompt.present();
-      }
-} 
+          },
+          {
+            text: "Yes",
+            handler: () => {
+              confirm.dismiss().then(() => resolve(true));
+              return false;
+            }
+          }
+        ]
+      });
+      return confirm.present();
+    });
+  }}
