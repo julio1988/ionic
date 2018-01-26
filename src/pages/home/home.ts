@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import { ListPage } from '../list/list';
 import { ToastProvider} from '../../providers/toast.service';
+import { AlertProvider } from '../../providers/alert.service';
 
 @Component({
   selector: 'page-home',
@@ -10,7 +11,7 @@ import { ToastProvider} from '../../providers/toast.service';
 })
 export class HomePage {
   items = []; 
-  constructor(public navCtrl: NavController, private toast: ToastProvider) {
+  constructor(public navCtrl: NavController, private toast: ToastProvider, private alert: AlertProvider) {
     this.items = [
       {
         'title': 'Perfil',
@@ -43,6 +44,7 @@ export class HomePage {
   openNavDetailsPage(item) {
      if(item.title == 'Perfil'){
       this.navCtrl.push(ProfilePage, { item: item });
+      this.alert.showPrompt();
      }
      if(item.title == 'List'){
       this.navCtrl.push(ListPage, { item: item });
