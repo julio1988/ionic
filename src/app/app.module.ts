@@ -1,30 +1,25 @@
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+// Root
+import { ErrorHandler, NgModule } from "@angular/core";
+import { IonicApp, IonicErrorHandler, IonicModule } from "ionic-angular";
+import {
+  MODULES,
+  NATIVEMODULES,
+  PROVIDERS,
+  NATIVEPROVIDERS
+} from "./app.imports";
 
-import { MyApp } from './app.component';
-import { ListPage } from '../pages/list/list';
-
-import { NATIVEMODULES, NATIVEPROVIDERS, PROVIDERS, MODULES} from "./app.imports"
+// Root Component
+import { MyApp } from "./app.component";
 
 @NgModule({
-  declarations: [
-    MyApp,
-    ListPage
-  ],
-  imports: [
-    MODULES,
-    NATIVEMODULES,
-    IonicModule.forRoot(MyApp),
-  ],
+  declarations: [MyApp],
+  imports: [MODULES, NATIVEMODULES, IonicModule.forRoot(MyApp)],
   bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    ListPage
-  ],
+  entryComponents: [MyApp],
   providers: [
     PROVIDERS,
     NATIVEPROVIDERS,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
 export class AppModule {}

@@ -1,46 +1,49 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
-import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
-import { ProfilePage } from '../pages/profile/profile';
+// Core do Angular
+import { Component, ViewChild } from "@angular/core";
+// Native providers
+import { Nav, Platform } from "ionic-angular";
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
+// Providers
+import { AuthServiceProvider } from "../providers/auth-service/auth-service";
 
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: "app.html"
 })
 export class MyApp {
+  // Utilizado para informar que a página vai ter filhos, ou seja, páginas que irão nascer dela
   @ViewChild(Nav) nav: Nav;
+  // Armazena a página Login Page em uma variável para especificar qual é a página de entrada do usuário no app
+  rootPage: any = "LoginPage";
 
-  rootPage: any = HomePage;
+  pages: Array<{ title: string; component: any }>;
 
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public authService: AuthServiceProvider
+  ) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'List', component: ListPage },
-      { title: 'Profile', component: ProfilePage }
+      { title: "Home", component: "HomePage" },
+      { title: "Report", component: "ReportPage" },
+      { title: "Profile", component: "ProfilePage" },
+      { title: "Scaner", component: "ScannerPage" },
+      { title: "Sair", component: "LoginPage" }
     ];
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
+    if (page.component === "LoginPage") this.authService.logout();
     this.nav.setRoot(page.component);
   }
 }

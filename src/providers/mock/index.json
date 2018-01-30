@@ -1,0 +1,64 @@
+{
+  "usuario": [
+    {
+      "id": "1",
+      "nome": "Hygor",
+      "email": "hygor.zorak@matera.com",
+      "login": "hygor",
+      "senha": "123456",
+      "perfil": "ALUNO",
+      "urlFoto": "assets/imgs/avatar/default.png"
+    },
+    {
+      "id": "2",
+      "nome": "Flavia",
+      "email": "flavia.domingues@matera.com",
+      "login": "flavia",
+      "senha": "123456",
+      "perfil": "ALUNO",
+      "urlFoto": "assets/imgs/avatar/default.png"
+    }
+  ],
+  "disciplina": [
+    {
+      "id": "1",
+      "descricao": "Angular",
+      "instrutores": ["1", "2"],
+      "dataInicio": "2018/01/22",
+      "dataTermino": "2018/02/02",
+      "segmento": "Front-end",
+      "urlLogo": null
+    },
+    {
+      "id": "2",
+      "descricao": "Ionic",
+      "instrutores": ["1", "2"],
+      "dataInicio": "2018/01/22",
+      "dataTermino": "2018/02/02",
+      "segmento": "Mobile",
+      "urlLogo": null
+    },
+    {
+      "id": "3",
+      "descricao": "Java",
+      "instrutores": ["1", "2"],
+      "dataInicio": "2018/01/22",
+      "dataTermino": "2018/02/02",
+      "segmento": "Backend",
+      "urlLogo": null
+    }
+  ],
+  "presenca": [
+    {
+      "dia": "2017/01/22",
+      "disciplina": "1",
+      "usuario": "1"
+    }
+  ],
+  "config": [
+    {
+      "usuario": "1",
+      "notificacao": false
+    }
+  ]
+}

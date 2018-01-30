@@ -1,14 +1,44 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Navigation</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="openNavDetailsPage(item)" icon-start>
-      <ion-icon [name]="item.icon" [ngStyle]="{'color': item.color}" item-start></ion-icon>
-      {{ item.title }}
-    </button>
-  </ion-list>
+  <ion-row>
+    <ion-col col-12>
+      <div class="main-title">
+        <span class="main-title-second-color">Acesso </span>Rápido
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="card-list">
+    <div>
+      <ion-card (click)="goToProfile()">
+        <ion-row>
+          <ion-icon name="person"></ion-icon>
+          <h5>Perfil</h5>
+        </ion-row>
+      </ion-card>
+    </div>
+    <div>
+      <ion-card (click)="goToScanner()">
+        <ion-row>
+          <ion-icon name="qr-scanner"></ion-icon>
+          <h5>Presença</h5>
+        </ion-row>
+      </ion-card>
+    </div>
+    <div>
+      <ion-card (click)="goToReport()">
+        <ion-row>
+          <ion-icon name="list"></ion-icon>
+          <h5>Relatório</h5>
+        </ion-row>
+      </ion-card>
+    </div>
+  </ion-row>
 </ion-content>

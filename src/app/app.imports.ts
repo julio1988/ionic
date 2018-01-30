@@ -1,41 +1,61 @@
 // Providers
-import { ToastProvider } from '../providers/toast.service';
-import { AlertProvider } from '../providers/alert.service'
+import { ToastService } from "../providers/utils/toast.service";
+import { AlertService } from "../providers/utils/alert.service";
+import { CameraProvider } from "../providers/utils/camera.service";
+import { AuthServiceProvider } from "../providers/auth-service/auth-service";
+import { UserServiceProvider } from "../providers/user-service/user-service";
+import { ReportServiceProvider } from "../providers/report-service/report-service";
+import { ScannerServiceProvider } from "../providers/scanner-service/scanner-service";
+// --------------------------------------------------
 
-//Native Providers
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
-// Native Modules
-import { BrowserModule } from '@angular/platform-browser'
+// Native Providers
+import { Camera } from "@ionic-native/camera";
+import { StatusBar } from "@ionic-native/status-bar";
+import { SplashScreen } from "@ionic-native/splash-screen";
+import { BarcodeScanner } from "@ionic-native/barcode-scanner";
+// --------------------------------------------------
 
 // Modules
-import { HomePageModule } from '../pages/home/home.module';
-import { ProfilePageModule } from '../pages/profile/profile.module';
-import { ScannerPageModule } from '../pages/scanner/scanner.module';
-import { ReportPageModule } from '../pages/report/report.module';
-import { LoginPageModule } from '../pages/login/login.module';
+import { HomePageModule } from "../pages/home/home.module";
+import { PrintPageModule } from "./../pages/report/print/print.module";
+import { ProfilePageModule } from "../pages/profile/profile.module";
+import { ReportPageModule } from "../pages/report/report.module";
+import { LoginPageModule } from "./../pages/login/login.module";
+import { RegisterPageModule } from "./../pages/register/register.module";
+import { ScannerPageModule } from "../pages/scanner/scanner.module";
+// --------------------------------------------------
 
-
-export const NATIVEMODULES = [
-    BrowserModule
-]
-
-export const NATIVEPROVIDERS = [
-    StatusBar,
-    SplashScreen
-]
-
-export const PROVIDERS = [
-    ToastProvider,
-    AlertProvider
-]
+// Native Modules
+import { BrowserModule } from "@angular/platform-browser";
+import { HttpClientModule } from "@angular/common/http";
+import { IonicStorageModule } from "@ionic/storage";
+// --------------------------------------------------
 
 export const MODULES = [
-    HomePageModule,
-    ProfilePageModule,
-    ScannerPageModule,
-    ReportPageModule,
-    LoginPageModule
-]
+  HomePageModule,
+  PrintPageModule,
+  ProfilePageModule,
+  ReportPageModule,
+  LoginPageModule,
+  RegisterPageModule,
+  ScannerPageModule
+];
 
+export const NATIVEMODULES = [
+  BrowserModule,
+  HttpClientModule,
+  IonicStorageModule.forRoot()
+];
+
+export const PROVIDERS = [
+  AlertService,
+  ToastService,
+  CameraProvider,
+  BarcodeScanner,
+  AuthServiceProvider,
+  UserServiceProvider,
+  ReportServiceProvider,
+  ScannerServiceProvider
+];
+
+export const NATIVEPROVIDERS = [Camera, StatusBar, SplashScreen];

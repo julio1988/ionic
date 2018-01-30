@@ -1,8 +1,17 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar primary>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Scanner</ion-title>
   </ion-navbar>
 </ion-header>
+
+<ion-content padding>
+  <div text-center>
+    <button ion-button icon-left color="primary" (click)="scan()">
+      <ion-icon name="qr-scanner"></ion-icon>
+      <div>Scan</div>
+    </button>
+  </div>
+</ion-content>
